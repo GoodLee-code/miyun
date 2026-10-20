@@ -341,13 +341,16 @@ body.long-poster-page-active.real-name-fixed-viewport-active .prototype-shell{he
 .family-add-code-inputs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--ui-space-2);width:100%;height:var(--ui-tap-size)}
 .family-add-code-inputs input{box-sizing:border-box;min-width:0;width:100%;height:100%;padding:0;border:1px solid #dceafe;border-radius:8px;background:#f8fbff;color:#14233a;font:600 18px/24px var(--ui-font-sans);text-align:center;text-transform:uppercase;outline:none}
 .family-add-code-inputs input:focus{border-color:#1682ff;box-shadow:0 0 0 1px #1682ff;background:#ffffffaa}
-.family-add-code-actions{display:flex;justify-content:flex-end;margin-top:var(--ui-space-3)}
-.family-add-resend{display:grid;place-items:center;box-sizing:border-box;width:144px;height:var(--ui-tap-size);padding:0 12px;border:1px solid #dceafe;border-radius:22px;background:#fff;color:#087cff;font:500 14px/22px var(--ui-font-sans);white-space:nowrap;cursor:pointer}
-.family-add-resend:hover:not(:disabled){background:#eef7ff;border-color:#8fc4ff}
-.family-add-resend:active:not(:disabled){background:#e2f1ff}
-.family-add-resend:disabled{opacity:1;color:#176fc1;background:#fff;border-color:#dceafe;cursor:not-allowed}
-.family-add-code-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;margin-top:var(--ui-space-3);color:#75819a;font:400 12px/18px var(--ui-font-sans)}
-.family-add-attempts-update{font:inherit;color:inherit}
+.family-add-code-actions{display:flex;margin-top:var(--ui-space-3)}
+.family-add-resend{display:grid;place-items:center;box-sizing:border-box;width:100%;height:var(--ui-tap-size);padding:0 16px;border:1px solid #d5e8fc;border-radius:22px;background:#eff7ff;color:#0868d4;font:500 14px/22px var(--ui-font-sans);white-space:nowrap;cursor:pointer}
+.family-add-resend:hover:not(:disabled){background:#e4f1ff;border-color:#aad0f6}
+.family-add-resend:active:not(:disabled){background:#d8eaff}
+.family-add-resend:disabled{opacity:1;color:#7c8ca3;background:#f4f7fb;border-color:#e6edf5;cursor:not-allowed}
+.family-add-code-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 8px;margin-top:var(--ui-space-2);color:#66758c;font:400 12px/18px var(--ui-font-sans)}
+.family-add-code-meta>span{white-space:nowrap}
+.family-add-code-meta strong{color:#405775;font:500 12px/18px var(--ui-font-sans);font-variant-numeric:tabular-nums}
+.family-add-code-meta-divider{width:1px;height:10px;flex:0 0 1px;background:#dbe5ef}
+@media(max-width:340px){.family-add-code-meta{flex-direction:column;gap:4px}.family-add-code-meta-divider{display:none}}
 .family-add-form-error{margin:8px 0 0;color:#d94343;font:400 12px/18px var(--ui-font-sans)}
 .family-add-form-error:empty{display:none}
 .family-add-submit{position:relative;z-index:3;display:grid;place-items:center;width:82%;height:var(--ui-action-height);min-height:48px;margin:16px auto 12px;padding:0;border:0;border-radius:30px;background:linear-gradient(100deg,#70bcff 0%,#1689ff 52%,#087df6 100%);color:#fff;font-size:15px;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -2231,7 +2234,7 @@ const markup = `<form id="family-number-add-form" class="family-add-form" data-f
       ${Array.from({length:6}, (_, index) => `<input type="text" inputmode="text" autocapitalize="characters" autocomplete="one-time-code" maxlength="1" data-family-code aria-label="验证码第${index + 1}位" ${index === 0 ? 'data-first-code' : ''}>`).join('')}
     </div>
     <div class="family-add-code-actions"><button type="button" class="family-add-resend" data-family-resend><span data-family-countdown>获取验证码</span></button></div>
-    <div class="family-add-code-meta"><span>验证码有效期 12 分钟</span><span>本次验证机会剩余：<span class="family-add-attempts-update" data-family-attempts-update>5次</span></span></div>
+    <div class="family-add-code-meta"><span>验证码有效期 <strong>12 分钟</strong></span><i class="family-add-code-meta-divider" aria-hidden="true"></i><span>本次验证机会剩余：<strong class="family-add-attempts-update" data-family-attempts-update>5次</strong></span></div>
     <p class="family-add-form-error" data-family-add-form-error role="alert" aria-live="polite"></p>
     <span class="family-add-capacity family-add-visually-hidden" data-family-number-capacity></span>
   </section>
